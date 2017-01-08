@@ -3,24 +3,45 @@
 </head>
 
 <body>
-
-  {{ > newEntry }}
-  {{ > listing  }}
+  <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          {{  > loginButtons }}
+          <h1>Message Board</h1>
+        </div>
+      </div>
+    {{ > newEntry }}
+    <br>
+    {{ > listing  }}
+  </div>
 
 </body>
 
 <template name="newEntry">
-  <form id="entryForm">
-    <textarea id="content" placeholder="Your Message"></textarea>
-    <button type="submit">Save</button>
-  </form> 
+  <div class="row">
+    <div class="col-xs-12">
+      <form id="entryForm">
+        <div class="form group">
+          <textarea id="content" class="form-control" placeholder="Your Message"></textarea>
+        </div>
+        <br>
+        <div class="form group">
+          <button type="submit" class="btn btn-success btn-lg btn-block">Save</button>
+        </div>
+      </form> 
+    </div>
+  </div>
 </template>
 
 <template name="listing">
-  <ul>
-    {{#each entries}}
-      <li>{{content}} - {{date}}</li>
-    {{/each}}
-  </ul>
+  <div class="row">
+    <div class="col-xs-12">
+      <ul class="list-group">
+        {{#each entries}}
+          <li class="list-group-item">{{content}} - {{formattedDate}}</li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
 </template>
 

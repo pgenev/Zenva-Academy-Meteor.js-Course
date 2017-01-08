@@ -1,9 +1,10 @@
 
-
-
 Template.listing.helpers({
 	entries: function() {
 		return Messages.find();
+	},
+	formattedDate: function() {
+		return this.date ? moment(this.date).format("ddd, hA h:mm:ss") : '';
 	}
 });
 
@@ -12,7 +13,8 @@ Template.newEntry.events({
 		event.preventDefault();
 
 		var c = $('#content').val();
-		Messages.insert({content: c, date: new Date()});
+		Meteor.call('addMessage', {content: c})
+		// Messages.insert({content: c, date: new Date()});
 		$('#content').val('');
 	}
 });
